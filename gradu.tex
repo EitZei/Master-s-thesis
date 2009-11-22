@@ -1,0 +1,70 @@
+% Tarvitaanko twoside?
+% Oleellista: utathesis sisältää tyylit
+% t1enc sisältää latin-1 koodauksen
+% babel sisältää suomennetut nimet
+% named on suositeltu bibliografia tyyppi
+
+\documentclass[twoside]{utathesis}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[finnish]{babel}
+\usepackage{named}
+
+% Suositus on, että kuvat erotetaan viivoilla
+\usepackage{utafloat}
+\usepackage{url}
+
+\begin{document}
+
+% Erotetaan kuvat viivoilla
+\floatstyle{ruled}
+\restylefloat{figure}
+
+\prelimpages
+
+\Title{Gradu}
+\Author{Antti Järvinen}
+\Supervisor{Timo Niemi}
+\titlepage
+
+\setcounter{page}{-1}
+\abstract{%
+Abstract goes here.%
+}
+
+\tableofcontents
+%\listoffigures % not necessary at all
+%\listoftables  % I have no tables
+
+\textpages
+ 
+\chapter{Introduction}
+Testing citing \cite{brewer}
+
+\chapter{Scaling}
+\section{Vertical scaling}
+i.e. scaling up
+\section{Horizontal scaling}
+i.e. scaling out
+
+\chapter{CAP}
+
+\chapter{Scaling out RDBMS}
+
+\chapter{Alternatives}
+\section{NoSQL}
+\section{Datamodels}
+\section{Cassandra, BigTable etc.}
+\section{Applications}
+\section{Pros and Cons}
+
+\input{discussion}
+
+%\nocite{*}   % include everything in gradu-esim.bib file
+\bibliographystyle{named}
+\bibliography{bib}
+
+% Tämä on utathesis paketin bugi: Tarvitaan end-of-document viite, että
+% sivujen määrä saadaan laskettua oikein
+\label{end-of-document}
+\end{document}
